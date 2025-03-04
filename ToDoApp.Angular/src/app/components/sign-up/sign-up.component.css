@@ -1,0 +1,63 @@
+.sign-up-component{
+    top: 0;
+    left: 0;
+    background-image: url(/assets/background.png);
+    z-index: 1;
+}
+.register{
+    padding-top: 5%;
+}
+.sign-up{
+    z-index: 2;
+    background-color: #EDB046;
+}
+.title h1 {
+    font-size: 55px;
+    color: white;
+}
+.title p {
+    color: white;
+}
+
+.form-group input {
+    height: 25px;
+    color: #B5B5B5;
+    border: 2px solid white;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.form-group button {
+    background-color: #Ebedef;
+    background-color: #Ba5112;
+    border: #ba5112;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+}
+
+.form-group span {
+    font-size: 18px;
+}
+
+span a {
+    color: #ba5112;
+    cursor: pointer;
+}
+@media screen and (max-width: 576px) {
+    .title h1{
+        font-size: 36px;
+    }
+    .title p{
+        font-size: 10px;
+    }
+    .form-group input{
+        font-size: 14px;
+    }
+    .form-group button{
+        font-size: 14px;
+    }
+    .form-group span{
+        font-size: 11px;
+    }
+} 

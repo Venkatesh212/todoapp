@@ -1,0 +1,95 @@
+.task{
+    box-shadow: 0px 0px 5px 4px #ebedef;
+}
+.completed .task{
+    background-color: #edb046;
+}
+.task span{
+    font-size: 20px;
+    font-weight: 500;
+}
+.checkbox{
+    width: 18px;
+    height: 18px;
+    border-radius: 10px;
+    border-color: aliceblue;
+    accent-color: #edb046;
+}
+.task-title{
+    cursor: pointer;
+}
+.task-title-medium{
+    color: orange;
+}
+.task-title-high{
+    color: red;
+}
+.completed .checkbox{
+    width: 20px;
+    height: 20px;
+    border-color: aliceblue;
+    outline: 3px solid #edb046;
+    accent-color: #ba5112;
+}
+
+.description-box{
+    box-shadow: 0px 0px 5px 4px #ebedef;
+    background-color: white;
+    z-index: 2;
+    top: 130%;
+}
+.completed .description-box{
+    box-shadow: none !important;
+    background-color: #edb046;
+}
+.title h1{
+    font-size: 32px;
+    font-weight: 600;
+}
+.title span{
+    color: #b5b5b5;
+    font-size: 20px;
+}
+.completed .title span{
+    color: #ba5112;
+}
+.description span{
+    font-size: 20px;
+    font-weight: 500;
+}
+.options img{
+    cursor: pointer;
+}
+.display-none{
+    display: none !important;
+}
+.display-flex{
+    display: flex !important;
+}
+
+
+@media screen and (max-width:576px){
+    .task span{
+        font-size: 16px;
+    }
+    .title h1{
+        font-size: 15px;
+    }
+    .title span{
+        font-size: 10px;
+    }
+    .description span{
+        font-size: 9px;
+    }
+    .description h2{
+        font-size: 18px;
+    }
+    .checkbox ,.completed .checkbox{
+        width: 12px;
+        height: 12px;
+    }
+    .options img{
+        width: 20px;
+        height: 20px;
+    }
+}

@@ -1,0 +1,13 @@
+.heading h2{
+    font-size: 30px;
+    font-weight: 600;
+} 
+
+@media screen and ( max-width : 576px ){
+    .heading h2{
+        font-size: 12px;
+    }
+    .heading span{
+        font-size: 10px;
+    }
+}

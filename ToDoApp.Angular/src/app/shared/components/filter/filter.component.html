@@ -1,0 +1,27 @@
+<div class="filter d-flex flex-row justify-content-between card py-2  align-items-center mt-4 ps-3 pe-3 mb-4 " [class.active-margin]="currentPage !='Dashboard'">
+  <div class=" d-flex flex-row align-items-center gap-2">
+    <div class="sort " (click)="sortTasks()">
+      <img src="../../../../assets/sort.png" alt="sort" class=" p-0 m-0"  >
+    </div>
+    <select #selectFilter class="form-select w-25" aria-label="Default select example" [class.d-none]="currentPage!='Dashboard'">
+      <option selected>Select</option>
+      <option value="all">ALL</option>
+      <option value="active">Active</option>
+      <option value="completed">Completed</option>
+    </select>
+    <select #sortFilter class="form-select w-25" aria-label="Default select example" [class.d-none]="currentPage =='Dashboard'">
+      <option selected>Sort</option>
+      <option value = 1>Priority-ascending</option>
+      <option value = 2>priority-descending</option>
+      <option value = 3>title-ascending</option>
+      <option value = 4>title-descending</option>
+    </select>
+    <div class="select-date">
+      <input #dateFilter type="date" placeholder="Select date" id="date" class="p-1 rounded">
+    </div>
+  </div>
+  <div class="buttons d-flex flex-row align-items-center gap-2">
+    <button class="reset btn btn-primary w-50 p-1 px-md-2" (click)="resetFilters()">Cancel</button>
+    <button class="apply btn btn-primary w-50 p-1 px-md-2" (click)="applyFilters()">Apply</button>
+  </div>
+</div>

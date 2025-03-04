@@ -1,0 +1,68 @@
+<div class="d-flex flex-column gap-3 mt-3" [class.completed]="isActive==false" >
+    @for(i of tasks; track i){
+    <div (click)="toggleDisplay(i.id)" class="task w-100 d-flex align-items-center position-relative rounded gap-3 p-2 p-sm-3 ps-4">
+        @if(i.isEditActive == true){
+        <input type="checkbox" (click)="toggleDisplay(i.id)" [checked]="isChecked.get(i.id)" (click)="selectCheckBox(i.id)" class="checkbox"
+            (change)="markAsCompletedOrActive(i)">
+        }
+        @if(i.isEditActive == false){
+        <input type="checkbox" [checked]="isChecked.get(i.id)" class="checkbox">
+        }
+
+        @if(isActive == true){
+            @if(i.priority == 0){
+                <span  class="task-title">{{i.title}}</span>
+            }
+            @else if(i.priority == 1){
+                <span  class="task-title">{{i.title}}</span>
+            }
+            @else{
+                <span  class="task-title">{{i.title}}</span>
+            }
+        }
+        @else{
+            <span  class="task-title">{{i.title}}</span>
+        }
+
+        <div class="card description-box position-absolute rounded d-none flex-column col-7 offset-5 col-md-5 offset-md-7 ps-4 pt-3"
+            [class.display-flex]="isShowTasks.get(i.id)">
+            <span class="title">
+                <h1 class="mb-0">{{i.title}}</h1>
+                <span class="p-0">Added {{ getRelativeDate(i.createdDate)}}</span><br>
+                <span class="p-0" [class.d-none]="isActive === false">This Task has {{taskPriority(i.priority)}} priority</span><br>
+                @if((getSubTasks(i.id).length)>0){
+                    <span class="p-0" [class.d-none]="isActive === false">This Task has {{getSubTasks(i.id)}} subtasks </span>
+                }
+            </span>
+            <span class="description mt-4">
+                <h2 class="mb-0">Description</h2>
+                <span>{{i.description}}</span>
+            </span>
+
+            <span class="buttons d-flex flex-row justify-content-between mt-4 mt-sm-5 pb-4 pe-4 align-items-center">
+                @if(i.isEditActive){
+                <input type="checkbox" class="checkbox" [checked]="isChecked.get(i.id)" (click)="selectCheckBox(i.id)"
+                    (change)="markAsCompletedOrActive(i)">
+                <span class="options d-flex gap-2 gap-sm-4">
+                    <img class="edit" [class.display-none]="isActive===false" src="/assets/active/edit.png" alt="edit"
+                        (click)="editTask(i)">
+                    <img class="active-delete" [class.display-flex]="isActive===true" src="/assets/active/delete.png"
+                        alt="delete" (click)="deleteTask(i.id)">
+                    <img class="completed-delete" [class.display-flex]="isActive ===false"
+                        [class.display-none]="isActive===true" src="/assets/completed/Vector.png" alt="delete"
+                        (click)="deleteTask(i.id)">
+                </span>
+                }
+                @if(i.isEditActive == false){
+                <span>This task belongs to {{i.assignUser}}</span>
+                }
+            </span>
+
+            <div class="card-footer p-s-0">
+                <small class="text-muted">Last updated {{getRelativeDate(i.editedDate)}}</small>
+            </div>
+        </div>
+
+    </div>
+    }
+</div>

@@ -1,0 +1,120 @@
+<div class="side-bar d-flex flex-row flex-sm-column justify-content-between text-center mb-4 ">
+    <span class="header align-items-center ms-2 ms-sm-0 ">
+        To-Do App
+    </span>
+    <div class="add-task-btn ms-0 ms-md-4">
+        <button
+            class="add-task btn btn-light ms-0 ms-sm-4 ms-md-3 ms-lg-5 d-none d-sm-flex align-items-center justify-content-evenly mt-5 mb-4 rounded "
+            (click)="onShowModal()">
+            <span>Add Task</span>
+            <img src="/assets/Add button.png" alt="add-task">
+        </button>
+    </div>
+    <div class="mobile-view d-flex d-sm-none flex-row align-center gap-2">
+        <div class="position-relative notification align-center">
+            <img src="assets/notifications.png" alt="notification" >
+            <span class="position-absolute  translate-middle badge rounded-pill bg-danger notification-count" *ngIf="notifyTask.length">
+                {{ notifyTask.length }}
+            </span>
+            <div class="dropdown-menu pe-4 ps-4 " *ngIf="notifyTask.length">
+                <div *ngFor="let i of notifyTask">
+                  {{i}}
+                </div>
+              </div>
+        </div>
+        <button class="add-task-mobile d-flex d-sm-none align-items-center justify-content-evenly  rounded gap-2"
+            (click)="onShowModal()">
+            <span>Add Task</span>
+            <img src="/assets/Add button.png" alt="add-task">
+        </button>
+        <button
+            class="sign-up btn btn-primary d-flex d-sm-none align-items-center  justify-content-evenly rounded gap-2 "
+            (click)="signOut()">
+            <span>Sign out</span>
+            <img src="/assets/vector.svg" alt="vector">
+        </button>
+    </div>
+    <div [class.d-none]="!isModelDisplay" class="modal-box rounded position-fixed">
+        <form [formGroup]="taskForm" class="p-3 p-sm-4">
+            <div class="mb-3">
+                <input type="text" formControlName="title" placeholder="Add Title*" minlength="2" maxlength="35"
+                    class="form-control add-title ps-3 w-100">
+            </div>
+            <div *ngIf="taskForm.controls['title'].invalid && (taskForm.controls['title'].dirty || taskForm.controls['title'].touched)" class="alert-message d-flex justify-content-start ms-4 mt-0 pt-0 pb-3">
+                <div *ngIf="taskForm.controls['title'].errors?.['required']">Title is required.</div>
+                <div *ngIf="taskForm.controls['title'].errors?.['minlength']">
+                    Title must be at least 2 characters long.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <textarea placeholder="Add description*" class="form-control add-description ps-3 pt-3 w-100"
+                    id="description" minlength="5" maxlength="80" formControlName="description"></textarea>
+            </div>
+            <div *ngIf="taskForm.controls['description'].invalid && (taskForm.controls['description'].dirty || taskForm.controls['description'].touched)" class="alert-message d-flex justify-content-start ms-4 mt-0 pt-0 pb-3">
+                <div *ngIf="taskForm.controls['description'].errors?.['required']">Description is required.</div>
+                <div *ngIf="taskForm.controls['description'].errors?.['minlength']">
+                    Description must be at least 5 characters long.
+                </div>
+            </div>
+                <div class="mb-3">
+                    <input type="date" placeholder="Select due date" id="date"
+                        class=" form-control p-1 ps-3 w-100 rounded" minDate="new date()" formControlName="dueDate">
+                </div>
+                <div class="mb-3">
+                    <select class="form-select ps-3" aria-label="Default select example" formControlName="priority">
+                        <!-- <option selected>Add Priority</option> -->
+                        <option value=0>Low</option>
+                        <option value=1>Medium</option>
+                        <option value=2>High</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <select class="form-select ps-3" aria-label="Default select example" formControlName="assignUser" >
+                        <!-- <option value=0>Assign-User</option> -->
+                       @for(user of users; track user){
+                        <option value={{user.id}}>{{user.userName}}</option>
+                       }
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <select class="form-select ps-3" aria-label="Default select example" formControlName="parentTaskId" >
+                        <!-- <option value=0>Assign-User</option> -->
+                       @for(task of tasks; track task){
+                        <option value={{task.id}}>{{task.title}}</option>
+                       }
+                    </select>
+                </div>
+                <div class=".buttons d-flex flex-row gap-2 justify-content-end">
+                    <button type="button" class="btn cancel me-2" (click)="onCancel()">Cancel</button>
+                    <button type="button" class="btn save me-2" (click)="onSubmit()"
+                        [class.d-none]="isUpdateActive == 1">Save</button>
+                    <button type="button" class="btn update" (click)="onEditSubmit()"
+                        [class.d-none]="isUpdateActive == 0">Update</button>
+                </div>
+        </form>
+    </div>
+    <div class="options pt-5 d-none d-sm-flex d-flex flex-column gap-4 justify-content-center align-items-center ">
+        <span class="dashboard" [class.display-flex]="isSelected==='Dashboard'" (click)="onDashboard()">Dashboard</span>
+        <span class="active" [class.display-flex]="isSelected==='Active'" (click)="onActive()">Active</span>
+        <span class="completed" [class.display-flex]="isSelected==='Completed'" (click)="onCompleted()">Completed</span>
+    </div>
+</div>
+
+<div class="dropdown d-block d-sm-none rounded mb-3 me-2 ps-3">
+    <button
+        class="dropdown-mobile btn btn-primary dropdown-toggle mb-3 me-2 ps-3 w-100 d-flex justify-content-between align-items-center"
+        type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        {{isSelected}}
+    </button>
+    <ul class="dropdown-menu w-100 me-5 pe-0">
+        <li><a class="dropdown-item me-0 pe-0" [class.d-none]="isSelected=='Dashboard'"
+                (click)="onDashboard()">Dashboard</a></li>
+        <li><a class="dropdown-item me-0 pe-0" [class.d-none]="isSelected=='Active'" (click)="onActive()">Active</a>
+        </li>
+        <li><a class="dropdown-item me-0 pe-0" [class.d-none]="isSelected=='Completed'"
+                (click)="onCompleted()">Completed</a></li>
+    </ul>
+</div>
+
+<div [class.overlay]="isModelDisplay" [class.display-none]="!isModelDisplay"></div>

@@ -1,0 +1,21 @@
+button{
+    width: 130px;
+    background-color: #ba5112 !important;
+    color: white !important;
+    border: 2px solid #ba5112 !important;
+}
+.heading{
+    font-size: 22px;
+    font-weight: 550;
+}
+.notification img{
+    height: 35px ;
+    width: 35px;
+}
+.dropdown-menu{
+    left: -100px;
+    width: 300px;
+}
+.notification:hover .dropdown-menu {
+    display: block;
+}

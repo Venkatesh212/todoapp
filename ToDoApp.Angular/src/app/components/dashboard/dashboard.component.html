@@ -1,0 +1,92 @@
+<div class="w-100 pe-4 ps-3 ms-2 me-2 pe-sm-5 ps-sm-5 ms-sm-3 me-sm-5 ">
+    <div class="header card d-flex flex-row align-items-center justify-content-between rounded mb-0 mb-sm-5">
+        <div class="heading ps-3 ps-sm-5">
+            <h1>hello, beautiful human!</h1>
+            <span> what do you want to do today? </span>
+        </div>
+        <img src="/assets/dashboard/user.png" alt="user">
+    </div>
+    <app-filter (filtersApplied)="applyFilters($event)" (filtersReset)="resetFilters($event)"
+        (sortFilters)="sortFilter($event)"></app-filter>
+    <div class="mobile-percentage-display d-flex d-sm-none align-items-center gap-2 ms-2 mt-4">
+        <div class="completed d-flex flex-row align-items-center gap-3 rounded mt-2">
+            <img src="/assets/dashboard/circle.png" alt="circle">
+            <span class="completed-box-content d-flex flex-column align-items-start">
+                <span class="percentage h3">{{completedPercentage | number : '1.0-0'}}%</span>
+                <span class="task-name">completed tasks</span>
+            </span>
+        </div>
+        <div class="active d-flex flex-row align-items-center gap-3 rounded mt-2">
+            <img src="/assets/dashboard/clock.png" alt="circle">
+            <span class="active-box-content d-flex flex-column align-items-start ">
+                <span class="percentage h3">{{activePercentage | number : '1.0-0'}}%</span>
+                <span class="task-name">Active tasks</span>
+            </span>
+        </div>
+    </div>
+    <div class="content d-flex flex-column mt-4 ">
+        <div class="tasks-heading d-flex flex-row align-items-center justify-content-between ">
+            <h1>Today's Tasks</h1>
+            <span class="d-flex flex-row gap-3 gap-sm-5">
+                <span class="delete " (click)="deleteTasks()">Delete All</span>
+                <span class="date me-0 me-sm-2 align-right">{{ day | date:'EEEE, MMMM d y'}}</span>
+            </span>
+            <div class="delete-confirm d-flex flex-column position-fixed gap-3 p-5 align-items-center"
+                [class.d-none]="isDeleteActive === false">
+                <div
+                    class="delete-confirm-message d-flex flex-column gap-3 p-5 align-items-center justify-content-center mt-5 rounded">
+                    Are you sure you want to delete all tasks?
+                    <div class="d-flex flex-row gap-2">
+                        <button class="btn btn-primary" (click)="cancelDeleteTasks()">Cancel</button>
+                        <button class="btn btn-primary" (click)="deleteAllTasks()">Ok</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="task row">
+            <div class="task-contents d-flex flex-column gap-3 col-12 col-sm-7 col-md-8 col-lg-10 mt-2 ">
+                @for(task of tasks; track task){
+                @if(task.isCompleted== false){
+                <div class="active-tasks d-flex flex-row align-items-center p-3 gap-3 rounded">
+                    @if(task.isEditActive == true){
+                        <input type="checkbox" class="checkbox" (change)="markAsCompleted(task)">
+                    }
+                    @if(task.isEditActive == false){
+                        <input type="checkbox" class="checkbox">
+                    }
+                    <span class="lead">{{task.title}}</span>
+                </div>
+                }
+                <!-- }
+                @for(task of tasks; track task){ -->
+                @if(task.isCompleted== true){
+                <div class="completed-tasks d-flex flex-row align-items-center  p-3 gap-3 rounded ">
+                    @if(task.isEditActive == true){
+                        <input type="checkbox" checked class="checkbox" (change)="markAsActive(task)">
+                    }
+                    @if(task.isEditActive == false){
+                        <input type="checkbox" checked class="checkbox">
+                    }
+                    <span class="lead">{{task.title}}</span>
+                </div>
+                }
+                }
+            </div>
+            @if(tasks.length!=0){
+            <div class="task-status d-flex flex-column gap-3 d-none d-sm-flex col-5 col-md-4 col-lg-2  ">
+                <div class="completed d-flex flex-column align-items-center gap-2 rounded py-4 w-100 ">
+                    <img src="/assets/dashboard/circle.png" alt="circle">
+                    <span class="percentage h2">{{completedPercentage | number : '1.0-0'}}%</span>
+                    <span class="task-name align-items-center">completed tasks</span>
+                </div>
+                <div class="active d-flex flex-column align-items-center gap-2 rounded py-4 w-100">
+                    <img src="/assets/dashboard/clock.png" alt="circle">
+                    <span class="percentage h2">{{activePercentage | number : '1.0-0'}}%</span>
+                    <span class="task-name">Active tasks</span>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>

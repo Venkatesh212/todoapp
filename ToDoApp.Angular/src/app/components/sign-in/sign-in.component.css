@@ -1,0 +1,64 @@
+.sign-in-component{
+    top: 0;
+    left: 0;
+    background-image: url(/assets/background.png);
+    z-index: 1;
+}
+.login{
+    padding-top: 5%;
+}
+.sign-in{
+    z-index: 2;
+    box-shadow: 0px 0px 5px 4px #ebedef;
+    background-color: white !important;
+}
+
+.title h1{
+    font-size: 55px;
+    color: #BA5112;
+    margin-top: 0px;
+}
+.form-group input {
+    height: 25px;
+    color: #B5B5B5;
+    box-shadow: 0px 0px 5px 4px #ebedef;
+    border: 2px solid white;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.form-group button {
+    background-color: #EDB046;
+    border: #EDB046;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #251814;
+}
+.form-group span {
+    font-size: 18px;
+}
+
+span a {
+    color: #EDB046;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 576px) {
+    .title h1{
+        font-size: 36px;
+    }
+    .title p{
+        font-size: 10px;
+    }
+    .form-group input{
+        font-size: 14px;
+    }
+    .form-group button{
+        font-size: 14px;
+    }
+    .form-group span{
+        font-size: 11px;
+    }
+} 

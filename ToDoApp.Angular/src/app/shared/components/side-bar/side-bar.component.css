@@ -1,0 +1,130 @@
+.side-bar .header{
+    font-size: 35px;
+    font-weight: 700;
+    color: #BA5112;   
+}
+.side-bar .add-task{
+    width: 68.75%;
+    height: 68px; 
+    background-color: white;
+    border: 2px solid white;
+    font-size: 18px;
+    font-weight: 500;
+    box-shadow: 0px 0px 5px 4px #ebedef;
+}
+.mobile-view button{
+    font-size: 9px
+}
+.mobile-view .add-task-mobile img{
+    height: 15px;
+    width: 15px;
+}
+.sign-up{
+    background-color: #ba5112;
+    border: 2px solid #ba5112;
+    color: white;
+} 
+.add-task-mobile{
+    background-color: white;
+    border: 2px solid white;
+    box-shadow: 0px 0px 5px 4px #ebedef;
+}
+
+.side-bar .options :hover{
+    cursor: pointer;
+    color: #5A5453;
+}
+.side-bar .display-flex{
+    height: 45px;
+    background-color: #edb146;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    pointer-events: none;
+    z-index: 4;
+}
+.dropdown .btn-primary{
+    background-color: #edb146 !important;
+    border: 2px solid #edb146 !important;
+    color: black !important;
+}
+.modal-box {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 2px solid white;
+    box-shadow: 0px 0px 5px 4px #ebedef;
+    z-index: 5; 
+    width: 79%;
+    max-width: 700px;
+}
+.add-title, .add-description {
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 4px #ebedef;
+    border: 2px solid white;
+}
+.add-title {
+    height: 50px;
+    font-size: 25px;
+}
+.add-description {
+    height: 125px;
+    font-size: 25px;
+}
+.buttons .btn {
+    height: 60px;
+    font-size: 20px;
+}
+.cancel,.save,.update{
+    border: 2px solid #edb146;
+}
+.cancel{
+    background-color: white;
+}
+.save,.update{
+    background-color: #edb146;
+}
+.alert-message{
+   color: red;
+}
+.notification img{
+    height: 20px ;
+    width: 20px;
+}
+.dropdown-menu{
+    left: -100px;
+    width: 300px;
+}
+.notification:hover .dropdown-menu {
+    display: block;
+}
+.notification-count{
+    font-size: 7px;
+}
+
+@media screen and (max-width: 576px) {
+    .header{
+        font-size: 22px !important;
+    }
+    .add-title{
+        font-size: 20px;
+    }
+    .add-description{
+        font-size: 20px;
+    }
+    .buttons .btn {
+        font-size: 15px;
+    }
+
+} 

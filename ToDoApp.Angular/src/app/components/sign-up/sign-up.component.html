@@ -1,0 +1,19 @@
+<div class="sign-up-component h-100 w-100 position-fixed"></div>
+<div class="register row justify-content-center mt-5">
+    <div class="sign-up position-absolute  col-10 col-sm-8 col-md-6 p-5 ">
+        <div class="content">
+            <div class="title d-flex flex-column align-items-center gap-2 mb-3">
+                <h1>To-Do App</h1>
+                <p>Start Organizing your life day to day</p>
+            </div>
+            <form class="form-group d-flex flex-column align-items-center gap-4" [formGroup]="signUpForm">
+                <input name="username" type="text" formControlName="userName" placeholder="Username"
+                    class="username w-100 p-4 rounded">
+                <input type="password" formControlName="password" placeholder="Password"
+                    class="password w-100 p-4 rounded ">
+                <button class="btn px-3 py-2 px-sm-4" type="submit" (click)="onSubmit()">Sign Up</button>
+                <span>Already have an account? Sign in <a (click)="onSignIn()">here</a></span>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+.select-date {
+    border: 2px solid white !important;
+}
+.active-margin{
+    margin-left: 20px;
+    margin-right: 10px;
+}
+.apply {
+    background-color: #f44848 !important;
+    color: white;
+    border: 2px solid #f44848 !important;
+    cursor: pointer;
+}
+.reset {
+    color: #f44848;
+    background-color: white !important;
+    border: 2px solid #f44848 !important;
+    cursor: pointer;
+}
+img {
+    height: 30px;
+    width: 30px;
+}
+@media screen and (max-width: 576px) {
+    .buttons button,.select-date,select {
+        font-size: 8px;
+    }
+    img {
+        height: 18px;
+        width: 18px;
+    }
+}

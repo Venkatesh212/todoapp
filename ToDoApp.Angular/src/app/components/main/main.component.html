@@ -1,0 +1,11 @@
+<div class="row me-0 me-sm-4 mt-3 mt-sm-4">
+    <div class="col-sm-3">
+        <app-side-bar (presentPage)="currentPage($event)"></app-side-bar>
+    </div>
+    <div class="col-sm-9 main">
+        <app-app-header [presentPage]="presentPage"></app-app-header>
+        <app-loading></app-loading>
+        <router-outlet></router-outlet>
+        
+    </div>  
+</div>    

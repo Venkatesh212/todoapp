@@ -1,0 +1,23 @@
+<div class="d-none d-sm-flex flex-row justify-content-between mb-5">
+    <div class="heading ">
+        {{presentPage}}
+    </div>
+    <div class="header-right d-sm-flex flex-row gap-4">
+        <div class="position-relative notification">
+            <img src="assets/notifications.png" alt="notification" >
+            <span class="position-absolute  translate-middle badge rounded-pill bg-danger" *ngIf="notifyTask.length">
+                {{ notifyTask.length }}
+            </span>
+            <div class="dropdown-menu pe-4 ps-4 " *ngIf="notifyTask.length">
+                <div *ngFor="let i of notifyTask">
+                  {{i}}
+                </div>
+              </div>
+        </div>
+        <button class=" col-2 btn btn-primary active rounded float-right d-flex flex-row align-items-center justify-content-evenly " (click)="signOut()">
+            <span class="">Sign out</span>
+            <img src="/assets/vector.svg" alt="vector">
+        </button>
+    </div>
+    
+</div>
